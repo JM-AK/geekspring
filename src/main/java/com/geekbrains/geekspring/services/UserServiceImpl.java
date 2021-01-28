@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +34,7 @@ public class UserServiceImpl implements UserService {
 	public void setRoleRepository(RoleRepository roleRepository) {
 		this.roleRepository = roleRepository;
 	}
+
 
 	@Autowired
 	public void setPasswordEncoder(BCryptPasswordEncoder passwordEncoder) {
@@ -61,6 +63,21 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public void save(User user) {
+
+	}
+
+	@Override
+	public User findById(Long id) {
+		return null;
+	}
+
+	@Override
+	public void deleteById(Long id) {
+
+	}
+
+	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		User user = userRepository.findOneByUserName(userName);
@@ -69,6 +86,12 @@ public class UserServiceImpl implements UserService {
 		}
 		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
 				mapRolesToAuthorities(user.getRoles()));
+	}
+
+	@Override
+	@Transactional
+	public List<User> findAll() {
+		return null;
 	}
 
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {

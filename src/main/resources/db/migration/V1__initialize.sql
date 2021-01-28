@@ -26,8 +26,7 @@ CREATE TABLE users (
 
 INSERT INTO users (username,password,first_name,last_name,email)
 VALUES
-('alex','$2a$10$CGamJWPYokRss2FX6WcBJOgFIDKyUoCYnrGtepfVQyDSTdngSxrzK','Alex','GeekBrains','alex@gb.com'),
-('admin','$2y$10$yijCNWIm/eilCnlSZHtugeXe8jYsHQTfEoDq.HR86jJxN/tDKYIGy', 'Admin', 'Admin','admin@gb.com');
+('alex','$2a$10$CGamJWPYokRss2FX6WcBJOgFIDKyUoCYnrGtepfVQyDSTdngSxrzK','Alex','GeekBrains','alex@gb.com');
 
 DROP TABLE IF EXISTS users_roles;
 
@@ -52,10 +51,7 @@ INSERT INTO users_roles (user_id, role_id)
 VALUES
 (1, 1),
 (1, 2),
-(1, 3),
-(2, 1),
-(2, 2),
-(2, 3);
+(1, 3);
 
 DROP TABLE IF EXISTS students;
 

@@ -1,0 +1,6 @@
+Включение DevTools в IDEA
+
+File –> Setting –> Build, Execution, Deployment –> Compiler –> check this Build project automatically
+
+compiler.automake.allow.when.app.running
+SHIFT+CTRL+A (Win/Lin) or Command+CTRL+A (Mac) "registry..."

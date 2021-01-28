@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.3.1/dist/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<body>
+<div th:replace="~{navigation :: navi(Empty)}" />
+<div class="container">
+    <h1>Active Courses</h1>
+    <table class="table">
+        <thead>
+        <tr class="thead-dark">
+            <td>Id</td>
+            <td>Title</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+
+        <tr class="myTableRow responsive-row" th:each="course : ${studentCourses}" th:attr="entryIndex=${course.id}">
+            <td th:text="${course.id}"/>
+            <td th:text="${course.title}"/>
+            <td>
+                <a type="button" class="btn btn-danger removeBtn" th:href="@{'/students/courses/remove/' + ${studentId} + '/' + ${course.id}}">Remove Course</a>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <h1>Missing Courses</h1>
+    <table class="table">
+        <thead>
+        <tr class="thead-dark">
+            <td>Id</td>
+            <td>Title</td>
+            <td>Actions</td>
+        </tr>
+        </thead>
+
+        <tr class="myTableRow responsive-row" th:each="course : ${studentMissingCourses}" th:attr="entryIndex=${course.id}">
+            <td th:text="${course.id}"/>
+            <td th:text="${course.title}"/>
+            <td>
+                <a type="button" class="btn btn-primary" th:href="@{'/students/courses/add/' + ${studentId} + '/' + ${course.id}}">Add Course</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
